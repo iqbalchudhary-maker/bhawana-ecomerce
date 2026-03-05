@@ -1,0 +1,24 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // Ya jo bhi aap use kar rahe hain
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(cuid())
+  username String @unique
+  password String
+}
+
+model Product {
+  id          String @id @default(cuid())
+  name        String
+  price       Float
+  stock       Int
+  image       String
+}
